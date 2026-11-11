@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROYALMONAARCH ENTERPRISES — Engineering Education. Powering Global Trade.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+:root{
+  --void:#03040a;
+  --deep:#060710;
+  --surface:#0a0b16;
+  --panel:#0f1020;
+  --rim:#181930;
+  --line:#222340;
+  --fade:#32345a;
+  --muted:#62648a;
+  --mid:#9092b8;
+  --text:#e5e6f5;
+  --bright:#ffffff;
+  --turq:#00c8b4;
+  --turq-dim:rgba(0,200,180,0.10);
+  --turq-glow:rgba(0,200,180,0.05);
+  --turq-bright:#00e5cc;
+  --gold:#c8a84b;
+  --gold-dim:rgba(200,168,75,0.10);
+  --gold-glow:rgba(200,168,75,0.05);
+  --ff-serif:'Playfair Display',Georgia,serif;
+  --ff-sans:'DM Sans',sans-serif;
+  --ff-mono:'DM Mono',monospace;
+}
+body{
+  background:var(--void);
+  color:var(--text);
+  font-family:var(--ff-sans);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  cursor:none;
+}
+a{color:inherit;text-decoration:none}
+
+/* ── CURSOR ── */
+.cur,.cur-trail{position:fixed;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%)}
+.cur{width:6px;height:6px;background:var(--turq);transition:transform .1s}
+.cur-trail{width:28px;height:28px;border:1px solid rgba(0,200,180,.35);transition:all .18s cubic-bezier(.2,.8,.2,1)}
+
+/* ── NOISE TEXTURE ── */
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.026;pointer-events:none;z-index:9998;mix-blend-mode:overlay
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:0 64px;
+  transition:all .4s ease
+}
+nav.solid{
+  background:rgba(3,4,10,.9);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--line)
+}
+.nav-inner{
+  max-width:1320px;margin:0 auto;
+  height:76px;display:flex;align-items:center;justify-content:space-between
+}
+.logo{
+  font-family:var(--ff-serif);
+  font-size:1.2rem;font-weight:400;
+  letter-spacing:.06em;color:var(--bright);
+  display:flex;align-items:center;gap:10px
+}
+.logo-dot{color:var(--turq)}
+.logo-crown{
+  width:32px;height:32px;border:1px solid var(--turq);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:var(--turq)
+}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{
+  font-size:.7rem;font-weight:400;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);transition:color .2s
+}
+.nav-links a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-phone{
+  font-family:var(--ff-mono);font-size:.65rem;
+  color:var(--turq);letter-spacing:.08em;
+  transition:color .2s;display:flex;align-items:center;gap:8px
+}
+.nav-phone:hover{color:var(--turq-bright)}
+.nav-btn{
+  background:transparent;border:1px solid var(--turq);
+  color:var(--turq);font-family:var(--ff-sans);
+  font-size:.675rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
+  padding:10px 24px;cursor:none;transition:all .25s
+}
+.nav-btn:hover{background:var(--turq);color:var(--void)}
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  cursor:none;background:none;border:none;padding:4px
+}
+.hamburger span{
+  display:block;width:24px;height:1px;
+  background:var(--text);transition:all .3s
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;position:relative;
+  display:flex;align-items:center;overflow:hidden
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 65% 35%, rgba(0,200,180,.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 15% 75%, rgba(200,168,75,.05) 0%, transparent 60%),
+    var(--void)
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,200,180,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,200,180,.022) 1px,transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 90% 90% at 65% 35%,black 0%,transparent 80%)
+}
+.hero-inner{
+  max-width:1320px;margin:0 auto;width:100%;
+  padding:160px 64px 100px;
+  display:grid;grid-template-columns:1fr 440px;gap:80px;
+  align-items:center;position:relative;z-index:2
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:32px;
+  font-family:var(--ff-mono);font-size:.6rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--turq)
+}
+.badge-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--turq);
+  animation:blink 2s infinite
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{
+  font-family:var(--ff-serif);
+  font-size:clamp(2.75rem,5vw,5.5rem);
+  font-weight:300;line-height:1.04;
+  letter-spacing:-.02em;
+  color:var(--bright);
+  margin-bottom:24px
+}
+.hero h1 em{font-style:italic;color:var(--turq)}
+.hero h1 .accent{color:var(--gold)}
+.hero-sub{
+  font-size:.9375rem;color:var(--mid);
+  max-width:520px;line-height:1.9;
+  font-weight:300;margin-bottom:20px
+}
+.hero-tagline{
+  font-family:var(--ff-mono);font-size:.6rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:44px;
+  display:flex;align-items:center;gap:10px
+}
+.hero-tagline::before{content:'';width:24px;height:1px;background:var(--gold)}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-turq{
+  background:var(--turq);color:var(--void);
+  font-family:var(--ff-sans);font-size:.7rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:16px 36px;border:none;cursor:none;
+  transition:all .25s;display:inline-flex;align-items:center;gap:10px;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))
+}
+.btn-turq:hover{background:var(--turq-bright);transform:translateX(3px)}
+.btn-gold{
+  background:var(--gold);color:var(--void);
+  font-family:var(--ff-sans);font-size:.7rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:16px 36px;border:none;cursor:none;
+  transition:all .25s;display:inline-flex;align-items:center;gap:10px;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))
+}
+.btn-gold:hover{background:#e0bb5c;transform:translateX(3px)}
+.btn-ghost{
+  background:transparent;color:var(--muted);
+  font-family:var(--ff-sans);font-size:.7rem;font-weight:400;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:16px 28px;border:1px solid var(--rim);cursor:none;
+  transition:all .25s
+}
+.btn-ghost:hover{color:var(--text);border-color:var(--fade)}
+.hero-proof{
+  margin-top:60px;padding-top:40px;
+  border-top:1px solid var(--line);
+  display:flex;gap:48px;flex-wrap:wrap
+}
+.proof-stat .n{
+  font-family:var(--ff-serif);
+  font-size:2.25rem;font-weight:300;
+  color:var(--bright);display:block;line-height:1
+}
+.proof-stat .l{
+  font-size:.6rem;font-family:var(--ff-mono);
+  color:var(--muted);letter-spacing:.15em;
+  text-transform:uppercase;margin-top:4px;display:block
+}
+
+/* ── HERO CARD ── */
+.hero-right{position:relative}
+.dashboard{
+  background:var(--panel);
+  border:1px solid var(--rim);
+  overflow:hidden;
+  animation:float-y 7s ease-in-out infinite
+}
+@keyframes float-y{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.dash-header{
+  padding:14px 20px;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--surface)
+}
+.dash-dots{display:flex;gap:6px}
+.dd{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.dd:nth-child(1){background:#e06c6c}
+.dd:nth-child(2){background:#e0a56c}
+.dd:nth-child(3){background:#5ce08a}
+.dash-title{
+  font-family:var(--ff-mono);font-size:.55rem;
+  color:var(--muted);letter-spacing:.15em;text-transform:uppercase
+}
+.dash-body{padding:22px 20px}
+.dash-lbl{
+  font-family:var(--ff-mono);font-size:.55rem;
+  color:var(--turq);letter-spacing:.2em;text-transform:uppercase;margin-bottom:5px
+}
+.dash-val{
+  font-family:var(--ff-serif);font-size:2rem;
+  font-weight:300;color:var(--bright);
+  margin-bottom:4px;display:block
+}
+.dash-sub{font-size:.72rem;color:var(--muted);margin-bottom:16px}
+.bar-track{height:2px;background:var(--rim);margin-bottom:18px;overflow:hidden}
+.bar-fill{
+  height:100%;width:0;
+  background:linear-gradient(90deg,var(--turq),var(--turq-bright));
+  animation:bar-grow 1.8s .8s ease-out forwards
+}
+@keyframes bar-grow{to{width:78%}}
+.dash-row{display:flex;gap:10px;margin-bottom:12px}
+.dm{
+  flex:1;background:var(--surface);
+  border:1px solid var(--line);padding:10px 12px
+}
+.dm-val{
+  font-family:var(--ff-serif);font-size:1.1rem;
+  font-weight:300;color:var(--turq);display:block
+}
+.dm-lbl{
+  font-size:.52rem;font-family:var(--ff-mono);
+  color:var(--muted);text-transform:uppercase;letter-spacing:.1em
+}
+.dash-log{border-top:1px solid var(--line);padding-top:12px}
+.log-item{
+  display:flex;align-items:center;gap:10px;
+  padding:5px 0;border-bottom:1px solid var(--line)
+}
+.log-item:last-child{border-bottom:none}
+.log-dot{width:5px;height:5px;border-radius:50%;background:var(--turq);flex-shrink:0}
+.log-dot.g{background:#5ce08a}
+.log-dot.gold{background:var(--gold)}
+.log-text{font-size:.68rem;color:var(--mid);flex:1}
+.log-time{font-family:var(--ff-mono);font-size:.52rem;color:var(--muted)}
+
+/* ── CREDIBILITY STRIP ── */
+.cred{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--deep)}
+.cred-inner{
+  max-width:1320px;margin:0 auto;
+  padding:0 64px;
+  display:grid;grid-template-columns:repeat(5,1fr)
+}
+.cred-item{
+  padding:32px 24px;border-right:1px solid var(--line);
+  display:flex;flex-direction:column;gap:3px
+}
+.cred-item:last-child{border-right:none}
+.cred-n{
+  font-family:var(--ff-serif);font-size:1.875rem;
+  font-weight:300;color:var(--bright);line-height:1
+}
+.cred-l{
+  font-size:.6rem;font-family:var(--ff-mono);
+  color:var(--muted);letter-spacing:.12em;text-transform:uppercase
+}
+
+/* ── SECTION COMMONS ── */
+section{padding:120px 64px}
+.s-inner{max-width:1320px;margin:0 auto}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.ey-line{width:24px;height:1px;background:var(--turq)}
+.ey-txt{
+  font-family:var(--ff-mono);font-size:.575rem;
+  color:var(--turq);letter-spacing:.25em;text-transform:uppercase
+}
+h2.sh{
+  font-family:var(--ff-serif);
+  font-size:clamp(2.25rem,3.8vw,3.875rem);
+  font-weight:300;line-height:1.1;letter-spacing:-.01em;
+  color:var(--bright)
+}
+h2.sh em{font-style:italic;color:var(--turq)}
+h2.sh .gold{color:var(--gold)}
+.s-lead{
+  font-size:.9375rem;color:var(--mid);
+  max-width:520px;line-height:1.85;
+  font-weight:300;margin-top:18px
+}
+
+/* ── SOLUTIONS ── */
+.solutions{background:var(--deep)}
+.sol-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;border:1px solid var(--line);margin-top:56px
+}
+.sol-card{
+  border-right:1px solid var(--line);padding:0;
+  overflow:hidden;cursor:none;transition:background .3s
+}
+.sol-card:last-child{border-right:none}
+.sol-card:hover{background:var(--surface)}
+.sol-top{
+  padding:36px 32px 28px;border-bottom:1px solid var(--line)
+}
+.sol-icon{
+  width:48px;height:48px;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.25rem;color:var(--turq);margin-bottom:22px;
+  transition:border-color .3s
+}
+.sol-card:hover .sol-icon{border-color:var(--turq)}
+.sol-name{
+  font-family:var(--ff-serif);font-size:1.625rem;
+  font-weight:400;color:var(--text);margin-bottom:10px
+}
+.sol-desc{font-size:.85rem;color:var(--muted);line-height:1.75}
+.sol-body{padding:24px 32px 32px}
+.sol-tag{
+  font-size:.6rem;font-family:var(--ff-mono);
+  color:var(--turq);letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:14px
+}
+.sol-pts{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.sol-pts li{
+  font-size:.78rem;color:var(--muted);
+  display:flex;align-items:center;gap:10px
+}
+.sol-pts li::before{
+  content:'';width:12px;height:1px;
+  background:var(--turq);flex-shrink:0
+}
+.sol-metrics{
+  display:flex;gap:16px;padding-top:16px;
+  border-top:1px solid var(--line)
+}
+.sm-val{
+  font-family:var(--ff-serif);font-size:1.5rem;
+  font-weight:300;color:var(--turq);display:block
+}
+.sm-lbl{font-size:.6rem;font-family:var(--ff-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+
+/* ── EXPORT ── */
+.export{background:var(--void)}
+.exp-layout{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;
+  align-items:start;margin-top:56px
+}
+.exp-left{}
+.exp-items{display:flex;flex-direction:column;gap:0}
+.exp-item{
+  display:flex;gap:0;border:1px solid var(--line);
+  border-bottom:none;transition:background .2s;cursor:none
+}
+.exp-item:last-child{border-bottom:1px solid var(--line)}
+.exp-item:hover{background:var(--turq-glow)}
+.exp-num{
+  width:52px;min-width:52px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-mono);font-size:.5rem;
+  color:var(--turq);border-right:1px solid var(--line);
+  letter-spacing:.1em
+}
+.exp-content{padding:22px 26px}
+.exp-title{
+  font-size:.875rem;font-weight:500;
+  color:var(--text);margin-bottom:4px
+}
+.exp-desc{font-size:.78rem;color:var(--muted);line-height:1.65}
+.exp-right{
+  border:1px solid var(--line);
+  background:var(--panel);padding:48px;
+  position:relative;overflow:hidden
+}
+.exp-right::before{
+  content:'';position:absolute;top:0;right:0;
+  width:200px;height:200px;
+  background:radial-gradient(circle,var(--turq-dim),transparent 70%);
+  pointer-events:none
+}
+.exp-tag{
+  font-family:var(--ff-mono);font-size:.55rem;
+  color:var(--turq);letter-spacing:.2em;
+  text-transform:uppercase;display:block;margin-bottom:24px
+}
+.exp-headline{
+  font-family:var(--ff-serif);font-size:2rem;
+  font-weight:300;color:var(--bright);
+  margin-bottom:20px;line-height:1.2
+}
+.exp-body{
+  font-size:.875rem;color:var(--muted);
+  line-height:1.85;margin-bottom:32px
+}
+.exp-stats{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:12px;margin-bottom:36px
+}
+.es{
+  background:var(--surface);border:1px solid var(--line);padding:16px
+}
+.es-val{
+  font-family:var(--ff-serif);font-size:1.5rem;
+  font-weight:300;color:var(--turq);display:block
+}
+.es-lbl{font-size:.6rem;font-family:var(--ff-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+
+/* ── INDUSTRIES ── */
+.industries{background:var(--deep)}
+.ind-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:0;border:1px solid var(--line);margin-top:56px
+}
+.ind-card{
+  padding:44px;border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  position:relative;overflow:hidden;
+  transition:background .3s;cursor:none
+}
+.ind-card:hover{background:var(--surface)}
+.ind-card:nth-child(2n){border-right:none}
+.ind-card:nth-child(3),.ind-card:nth-child(4){border-bottom:none}
+.ind-num{
+  font-family:var(--ff-mono);font-size:.55rem;
+  color:var(--fade);letter-spacing:.2em;margin-bottom:18px
+}
+.ind-name{
+  font-family:var(--ff-serif);font-size:1.5rem;
+  font-weight:400;color:var(--text);margin-bottom:10px
+}
+.ind-desc{font-size:.85rem;color:var(--muted);line-height:1.75}
+.ind-arrow{
+  position:absolute;bottom:28px;right:28px;
+  color:var(--turq);font-size:1.125rem;
+  opacity:0;transition:opacity .3s;font-family:var(--ff-mono)
+}
+.ind-card:hover .ind-arrow{opacity:1}
+
+/* ── CASE STUDIES ── */
+.cases{background:var(--void)}
+.case-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:24px;margin-top:56px
+}
+.case-card{
+  border:1px solid var(--line);padding:36px;
+  background:var(--panel);transition:border-color .3s
+}
+.case-card:hover{border-color:var(--turq)}
+.case-label{
+  font-family:var(--ff-mono);font-size:.575rem;
+  color:var(--turq);letter-spacing:.18em;
+  text-transform:uppercase;
+  display:inline-block;padding:4px 10px;
+  background:var(--turq-dim);margin-bottom:20px
+}
+.case-name{
+  font-family:var(--ff-serif);font-size:1.25rem;
+  font-weight:400;color:var(--text);margin-bottom:14px;line-height:1.4
+}
+.case-desc{font-size:.82rem;color:var(--muted);line-height:1.75;margin-bottom:24px}
+.case-metrics{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px;border-top:1px solid var(--line);padding-top:20px
+}
+.cm{background:var(--surface);border:1px solid var(--line);padding:12px}
+.cm-val{
+  font-family:var(--ff-serif);font-size:1.5rem;
+  font-weight:300;color:var(--turq);display:block
+}
+.cm-lbl{font-size:.6rem;font-family:var(--ff-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+/* ── AGENCIES ── */
+.agencies{background:var(--deep)}
+.ag-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;border:1px solid var(--line);margin-top:56px
+}
+.ag-card{
+  padding:0;border-right:1px solid var(--line);
+  overflow:hidden;cursor:none;transition:background .3s;
+  position:relative
+}
+.ag-card:last-child{border-right:none}
+.ag-card:hover{background:var(--surface)}
+.ag-top{
+  padding:48px 44px 36px;border-bottom:1px solid var(--line);
+  position:relative
+}
+.ag-crown{
+  width:52px;height:52px;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.375rem;margin-bottom:24px;transition:border-color .3s
+}
+.ag-card:hover .ag-crown{border-color:var(--turq)}
+.ag-crown.gold-crown{border-color:var(--gold)}
+.ag-card:hover .ag-crown.gold-crown{border-color:#e0bb5c}
+.ag-type{
+  font-family:var(--ff-mono);font-size:.575rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:14px;display:block
+}
+.ag-name{
+  font-family:var(--ff-serif);font-size:2.25rem;
+  font-weight:300;color:var(--bright);margin-bottom:12px
+}
+.ag-promise{font-size:.875rem;color:var(--muted);line-height:1.7;max-width:360px}
+.ag-body{padding:32px 44px 44px}
+.ag-focus{
+  font-family:var(--ff-mono);font-size:.575rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:16px
+}
+.ag-pts{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:32px}
+.ag-pts li{
+  font-size:.8rem;color:var(--muted);
+  display:flex;align-items:center;gap:10px
+}
+.ag-pts li::before{content:'';width:12px;height:1px;flex-shrink:0}
+.ag-cta{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:.7rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;padding:14px 28px;
+  transition:all .25s;cursor:none;border:none;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px))
+}
+.ag-badge{
+  position:absolute;top:20px;right:20px;
+  font-family:var(--ff-mono);font-size:.5rem;
+  font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  padding:5px 12px;border:1px solid
+}
+
+/* turq agency */
+.ag-card.turq-agency .ag-crown{color:var(--turq)}
+.ag-card.turq-agency .ag-type{color:var(--turq)}
+.ag-card.turq-agency .ag-focus{color:var(--turq)}
+.ag-card.turq-agency .ag-pts li::before{background:var(--turq)}
+.ag-card.turq-agency .ag-cta{background:var(--turq);color:var(--void)}
+.ag-card.turq-agency .ag-cta:hover{background:var(--turq-bright);transform:translateX(3px)}
+.ag-card.turq-agency .ag-badge{color:var(--turq);border-color:rgba(0,200,180,.3);background:var(--turq-dim)}
+
+/* gold agency */
+.ag-card.gold-agency .ag-crown{color:var(--gold)}
+.ag-card.gold-agency .ag-type{color:var(--gold)}
+.ag-card.gold-agency .ag-focus{color:var(--gold)}
+.ag-card.gold-agency .ag-pts li::before{background:var(--gold)}
+.ag-card.gold-agency .ag-cta{background:var(--gold);color:var(--void)}
+.ag-card.gold-agency .ag-cta:hover{background:#e0bb5c;transform:translateX(3px)}
+.ag-card.gold-agency .ag-badge{color:var(--gold);border-color:rgba(200,168,75,.3);background:var(--gold-dim)}
+.ag-card.gold-agency{background:var(--gold-glow)}
+
+/* ── TEAM ── */
+.team{background:var(--void)}
+.team-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;border:1px solid var(--line);margin-top:56px
+}
+.team-card{
+  border-right:1px solid var(--line);padding:48px 36px;
+  text-align:center;transition:background .3s;cursor:none
+}
+.team-card:last-child{border-right:none}
+.team-card:hover{background:var(--surface)}
+.team-avatar{
+  width:80px;height:80px;border-radius:50%;
+  border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-serif);font-size:2rem;
+  color:var(--turq);margin:0 auto 24px;
+  transition:border-color .3s
+}
+.team-card:hover .team-avatar{border-color:var(--turq)}
+.team-name{
+  font-family:var(--ff-serif);font-size:1.375rem;
+  font-weight:400;color:var(--bright);margin-bottom:6px
+}
+.team-role{
+  font-family:var(--ff-mono);font-size:.575rem;
+  color:var(--turq);letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:18px
+}
+.team-bio{font-size:.8rem;color:var(--muted);line-height:1.75}
+
+/* ── RESOURCES ── */
+.resources{background:var(--deep)}
+.res-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;border:1px solid var(--line);margin-top:56px
+}
+.res-item{
+  border-right:1px solid var(--line);padding:40px 28px;
+  display:flex;flex-direction:column;gap:14px;
+  cursor:none;transition:background .2s;position:relative
+}
+.res-item:last-child{border-right:none}
+.res-item:hover{background:var(--turq-glow)}
+.res-icon{
+  width:44px;height:44px;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.125rem;color:var(--turq);
+  transition:border-color .2s
+}
+.res-item:hover .res-icon{border-color:var(--turq)}
+.res-name{font-size:.9375rem;font-weight:500;color:var(--text)}
+.res-desc{font-size:.78rem;color:var(--muted);line-height:1.65}
+.res-link{
+  font-size:.6rem;font-family:var(--ff-mono);
+  color:var(--turq);letter-spacing:.2em;
+  text-transform:uppercase;margin-top:auto;
+  display:flex;align-items:center;gap:8px
+}
+
+/* ── CONTACT ── */
+.contact{background:var(--void)}
+.contact-layout{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;
+  margin-top:56px;align-items:start
+}
+.contact-info{}
+.ci-block{
+  display:flex;gap:0;
+  border:1px solid var(--line);border-bottom:none;
+  transition:background .2s
+}
+.ci-block:last-child{border-bottom:1px solid var(--line)}
+.ci-block:hover{background:var(--turq-glow)}
+.ci-icon{
+  width:52px;min-width:52px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-mono);font-size:.7rem;
+  color:var(--turq);border-right:1px solid var(--line)
+}
+.ci-content{padding:22px 24px}
+.ci-label{
+  font-family:var(--ff-mono);font-size:.55rem;
+  color:var(--muted);letter-spacing:.15em;
+  text-transform:uppercase;margin-bottom:4px
+}
+.ci-val{font-size:.875rem;color:var(--text)}
+.ci-val a{color:var(--turq);transition:color .2s}
+.ci-val a:hover{color:var(--turq-bright)}
+.contact-form{}
+.form-field{margin-bottom:16px}
+.form-field input,
+.form-field textarea,
+.form-field select{
+  width:100%;padding:16px 18px;
+  border:1px solid var(--line);
+  background:var(--panel);
+  color:var(--text);
+  font-family:var(--ff-sans);font-size:.875rem;
+  transition:border-color .2s,background .2s;
+  appearance:none;outline:none
+}
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus{
+  border-color:var(--turq);background:var(--surface)
+}
+.form-field input.err,
+.form-field textarea.err,
+.form-field select.err{border-color:#e06c6c}
+.form-field textarea{min-height:130px;resize:vertical}
+.err-msg{
+  font-family:var(--ff-mono);font-size:.55rem;
+  color:#e06c6c;letter-spacing:.08em;
+  margin-top:4px;display:none
+}
+.form-field select option{background:var(--panel);color:var(--text)}
+.success-box{
+  display:none;
+  padding:20px 24px;
+  border:1px solid var(--turq);
+  background:var(--turq-dim);
+  margin-top:16px
+}
+.success-box p{
+  font-family:var(--ff-mono);font-size:.65rem;
+  color:var(--turq);letter-spacing:.1em
+}
+
+/* ── DEMO/CTA BOX ── */
+.cta-section{background:var(--deep)}
+.cta-box{
+  border:1px solid var(--line);background:var(--panel);
+  padding:80px;position:relative;overflow:hidden;
+  max-width:900px;margin:56px auto 0;text-align:center
+}
+.cta-box::before{
+  content:'';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(0,200,180,.04),transparent 70%);
+  pointer-events:none
+}
+.cta-box h2{margin-bottom:20px}
+.cta-box p{
+  font-size:.9375rem;color:var(--mid);
+  max-width:560px;margin:0 auto 44px;
+  line-height:1.85;font-weight:300
+}
+.cta-actions{display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap}
+.cta-note{
+  font-size:.65rem;color:var(--fade);
+  margin-top:20px;font-family:var(--ff-mono);
+  letter-spacing:.05em
+}
+
+/* ── NEWSLETTER ── */
+.newsletter{background:var(--void);padding:0 64px 80px}
+.nl-box{
+  max-width:1320px;margin:0 auto;
+  border:1px solid var(--line);
+  background:var(--panel);padding:60px;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center
+}
+.nl-left h3{
+  font-family:var(--ff-serif);font-size:2rem;
+  font-weight:300;color:var(--bright);margin-bottom:12px
+}
+.nl-left p{font-size:.875rem;color:var(--muted);line-height:1.75}
+.nl-form{display:flex;gap:0}
+.nl-input{
+  flex:1;padding:16px 18px;
+  border:1px solid var(--line);border-right:none;
+  background:var(--surface);
+  color:var(--text);font-family:var(--ff-sans);font-size:.875rem;
+  outline:none;transition:border-color .2s
+}
+.nl-input:focus{border-color:var(--turq)}
+.nl-btn{
+  background:var(--turq);color:var(--void);
+  font-family:var(--ff-sans);font-size:.7rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:0 28px;border:none;cursor:none;
+  transition:background .25s;white-space:nowrap
+}
+.nl-btn:hover{background:var(--turq-bright)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--deep);
+  border-top:1px solid var(--line);
+  padding:72px 64px
+}
+.footer-inner{max-width:1320px;margin:0 auto}
+.footer-top{
+  display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr 1fr;gap:48px;
+  margin-bottom:56px;padding-bottom:56px;
+  border-bottom:1px solid var(--line)
+}
+.footer-brand-name{
+  font-family:var(--ff-serif);
+  font-size:1.25rem;color:var(--bright);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px
+}
+.footer-brand-name .dot{color:var(--turq)}
+.footer-brand-p{
+  font-size:.8rem;color:var(--muted);
+  line-height:1.8;max-width:280px;margin-bottom:20px
+}
+.footer-socials{display:flex;gap:12px}
+.fs-link{
+  width:36px;height:36px;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;color:var(--muted);
+  transition:all .2s;cursor:none
+}
+.fs-link:hover{border-color:var(--turq);color:var(--turq)}
+.footer-col h4{
+  font-family:var(--ff-mono);font-size:.55rem;
+  color:var(--turq);letter-spacing:.2em;
+  text-transform:uppercase;margin-bottom:18px
+}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-col ul a{font-size:.8rem;color:var(--muted);transition:color .2s}
+.footer-col ul a:hover{color:var(--text)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:.7rem;color:var(--fade);font-family:var(--ff-mono)}
+.footer-legal{display:flex;gap:24px}
+.footer-legal a{font-size:.7rem;color:var(--fade);transition:color .2s}
+.footer-legal a:hover{color:var(--muted)}
+
+/* ── CHAT WIDGET ── */
+.chat-bubble{
+  position:fixed;bottom:28px;right:28px;
+  background:var(--turq);color:var(--void);
+  padding:14px 22px;
+  font-family:var(--ff-sans);font-size:.7rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;
+  cursor:none;z-index:900;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
+  transition:background .25s
+}
+.chat-bubble:hover{background:var(--turq-bright)}
+.chat-win{
+  position:fixed;bottom:90px;right:28px;
+  width:340px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  display:none;flex-direction:column;
+  z-index:901;
+  transform:scale(0.92) translateY(16px);
+  opacity:0;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .3s
+}
+.chat-win.open{
+  display:flex;
+  transform:scale(1) translateY(0);
+  opacity:1
+}
+.chat-head{
+  padding:16px 20px;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between
+}
+.chat-head-info{}
+.chat-head-name{
+  font-size:.875rem;font-weight:500;color:var(--text)
+}
+.chat-head-status{
+  font-family:var(--ff-mono);font-size:.55rem;
+  color:var(--turq);letter-spacing:.12em
+}
+.chat-close{
+  background:none;border:none;color:var(--muted);
+  font-size:1.125rem;cursor:none;line-height:1
+}
+.chat-body{
+  flex:1;padding:16px;
+  max-height:280px;overflow-y:auto;
+  display:flex;flex-direction:column;gap:10px
+}
+.chat-msg{
+  padding:10px 14px;border:1px solid var(--line);
+  font-size:.78rem;color:var(--text);line-height:1.6
+}
+.chat-msg.user{
+  border-color:var(--turq);background:var(--turq-dim);
+  align-self:flex-end
+}
+.chat-msg.agent{background:var(--surface)}
+.chat-foot{
+  padding:12px 16px;border-top:1px solid var(--line);
+  display:flex;gap:10px
+}
+.chat-inp{
+  flex:1;padding:10px 14px;
+  border:1px solid var(--line);background:var(--surface);
+  color:var(--text);font-family:var(--ff-sans);font-size:.78rem;
+  outline:none;transition:border-color .2s
+}
+.chat-inp:focus{border-color:var(--turq)}
+.chat-send{
+  background:var(--turq);color:var(--void);
+  border:none;padding:0 16px;
+  font-family:var(--ff-mono);font-size:.65rem;
+  letter-spacing:.1em;cursor:none;transition:background .2s
+}
+.chat-send:hover{background:var(--turq-bright)}
+
+/* ── REVEALS ── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.rv.on{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}
+.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}
+
+/* ── MOBILE ── */
+@media(max-width:1200px){
+  .sol-grid{grid-template-columns:1fr}
+  .sol-card{border-right:none;border-bottom:1px solid var(--line)}
+  .sol-card:last-child{border-bottom:none}
+  .exp-layout{grid-template-columns:1fr;gap:40px}
+  .team-grid{grid-template-columns:1fr}
+  .team-card{border-right:none;border-bottom:1px solid var(--line)}
+  .team-card:last-child{border-bottom:none}
+  .res-grid{grid-template-columns:repeat(2,1fr)}
+  .res-item:nth-child(2){border-right:none}
+  .res-item:nth-child(1),.res-item:nth-child(2){border-bottom:1px solid var(--line)}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .nl-box{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:1024px){
+  nav{padding:0 28px}
+  section{padding:80px 28px}
+  .hero-inner{grid-template-columns:1fr;padding:140px 28px 80px}
+  .hero-right{display:none}
+  .cred-inner{padding:0 28px;grid-template-columns:repeat(3,1fr)}
+  .cred-item:nth-child(4),.cred-item:nth-child(5){border-top:1px solid var(--line)}
+  .ind-grid{grid-template-columns:1fr}
+  .ind-card{border-right:none!important}
+  .ind-card:nth-child(n){border-bottom:1px solid var(--line);border-right:none}
+  .ind-card:last-child{border-bottom:none}
+  .case-grid{grid-template-columns:1fr}
+  .ag-grid{grid-template-columns:1fr}
+  .ag-card{border-right:none;border-bottom:1px solid var(--line)}
+  .ag-card:last-child{border-bottom:none}
+  .contact-layout{grid-template-columns:1fr;gap:40px}
+  .newsletter{padding:0 28px 60px}
+  .cta-box{padding:48px 28px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+}
+@media(max-width:640px){
+  .cred-inner{grid-template-columns:1fr 1fr}
+  .cred-item:nth-child(5){grid-column:span 2;border-top:1px solid var(--line);border-right:none}
+  .res-grid{grid-template-columns:1fr}
+  .res-item{border-right:none;border-bottom:1px solid var(--line)}
+  .res-item:last-child{border-bottom:none}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+  .hero-proof{gap:24px}
+  .nl-form{flex-direction:column}
+  .nl-btn{padding:14px}
+}
+
+/* ── MOBILE NAV OPEN ── */
+.nav-mobile{
+  display:none;
+  position:absolute;top:100%;left:0;right:0;
+  background:rgba(3,4,10,.97);
+  border-bottom:1px solid var(--line);
+  padding:24px 28px;
+  flex-direction:column;gap:16px
+}
+.nav-mobile.open{display:flex}
+.nav-mobile a{
+  font-size:.75rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--muted);
+  padding:10px 0;border-bottom:1px solid var(--line);
+  transition:color .2s
+}
+.nav-mobile a:last-child{border-bottom:none}
+.nav-mobile a:hover{color:var(--text)}
+</style>
+</head>
+<body>
+
+<div class="cur" id="cur"></div>
+<div class="cur-trail" id="curT"></div>
+
+<!-- ══════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo">
+      <div class="logo-crown">♛</div>
+      ROYALMONAARCH<span class="logo-dot">.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#export">Export</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#agencies">Agencies</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+      <button class="nav-btn" onclick="scrollTo('contact')">Get Started →</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#solutions" onclick="closeNav()">Solutions</a>
+    <a href="#export" onclick="closeNav()">Export Operations</a>
+    <a href="#industries" onclick="closeNav()">Industries</a>
+    <a href="#agencies" onclick="closeNav()">Our Agencies</a>
+    <a href="#cases" onclick="closeNav()">Case Studies</a>
+    <a href="#resources" onclick="closeNav()">Resources</a>
+    <a href="#team" onclick="closeNav()">Leadership</a>
+    <a href="#contact" onclick="closeNav()">Contact</a>
+    <a href="tel:+2348098198226">+234 809 819 8226</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════ -->
+<section class="hero" id="home" style="padding:0;max-width:100%">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        <span>Education Systems · Global Export Operations</span>
+      </div>
+      <h1>
+        ROYALMONAARCH<br>
+        <em>ENTERPRISES</em>
+      </h1>
+      <div class="hero-tagline">Engineering Education. Powering Global Trade.</div>
+      <p class="hero-sub">Enterprise-grade learning platforms + full-cycle export operations for institutions, governments, and global partners. Built for scale. Designed for impact.</p>
+      <div class="hero-actions">
+        <a href="#solutions" class="btn-turq">Explore Software →</a>
+        <a href="#export" class="btn-gold">Export Solutions →</a>
+        <a href="#contact" class="btn-ghost">Request Demo</a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-stat"><span class="n">$25M+</span><span class="l">Revenue Generated</span></div>
+        <div class="proof-stat"><span class="n">3,000+</span><span class="l">Clients Served</span></div>
+        <div class="proof-stat"><span class="n">12+</span><span class="l">Countries Reached</span></div>
+        <div class="proof-stat"><span class="n">42</span><span class="l">Millionaire Partners</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="dashboard">
+        <div class="dash-header">
+          <div class="dash-dots"><div class="dd"></div><div class="dd"></div><div class="dd"></div></div>
+          <div class="dash-title">// Operations Dashboard — Live</div>
+        </div>
+        <div class="dash-body">
+          <div class="dash-lbl">Total Revenue — Current Quarter</div>
+          <span class="dash-val">$4.2M</span>
+          <div class="dash-sub">↑ 67% year-over-year growth</div>
+          <div class="bar-track"><div class="bar-fill"></div></div>
+          <div class="dash-row">
+            <div class="dm"><span class="dm-val">8,500+</span><span class="dm-lbl">Students Enrolled</span></div>
+            <div class="dm"><span class="dm-val">99.9%</span><span class="dm-lbl">Platform Uptime</span></div>
+          </div>
+          <div class="dash-row">
+            <div class="dm"><span class="dm-val" style="color:var(--gold)">3</span><span class="dm-lbl">Continents Served</span></div>
+            <div class="dm"><span class="dm-val" style="color:#5ce08a">24/7</span><span class="dm-lbl">Support Active</span></div>
+          </div>
+          <div class="dash-log">
+            <div class="log-item"><div class="log-dot g"></div><div class="log-text">New LMS deployment — 12 schools onboarded</div><div class="log-time">2m ago</div></div>
+            <div class="log-item"><div class="log-dot gold"></div><div class="log-text">Export shipment cleared customs — Lagos</div><div class="log-time">8m ago</div></div>
+            <div class="log-item"><div class="log-dot"></div><div class="log-text">Trade partner agreement signed — EU market</div><div class="log-time">1h ago</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     CREDIBILITY STRIP
+══════════════════════════════════════════════════ -->
+<div class="cred">
+  <div class="cred-inner">
+    <div class="cred-item rv"><div class="cred-n">$25M+</div><div class="cred-l">Revenue Generated</div></div>
+    <div class="cred-item rv d1"><div class="cred-n">3,000+</div><div class="cred-l">Professionals Trained</div></div>
+    <div class="cred-item rv d2"><div class="cred-n">99.9%</div><div class="cred-l">Platform Uptime</div></div>
+    <div class="cred-item rv d3"><div class="cred-n">1,200+</div><div class="cred-l">Case Studies</div></div>
+    <div class="cred-item rv d4"><div class="cred-n">92%</div><div class="cred-l">Client Success Rate</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     SOLUTIONS
+══════════════════════════════════════════════════ -->
+<section class="solutions" id="solutions">
+  <div class="s-inner">
+    <div class="eyebrow rv"><div class="ey-line"></div><div class="ey-txt">Our Solutions</div></div>
+    <h2 class="sh rv">Three pillars.<br>One <em>enterprise</em>.</h2>
+    <p class="s-lead rv">Comprehensive technology systems and operational services engineered for scale, compliance, and sustainable competitive advantage.</p>
+    <div class="sol-grid rv">
+      <div class="sol-card">
+        <div class="sol-top">
+          <div class="sol-icon">◎</div>
+          <div class="sol-name">Education Management Systems</div>
+          <p class="sol-desc">Complete LMS platforms with virtual classrooms, student information systems, analytics dashboards, and administrative automation designed for modern institutions.</p>
+        </div>
+        <div class="sol-body">
+          <div class="sol-tag">// EdTech Infrastructure</div>
+          <ul class="sol-pts">
+            <li>Learning management & virtual classrooms</li>
+            <li>Student information & analytics</li>
+            <li>Parent portals & admin dashboards</li>
+            <li>Assessment automation & grading</li>
+            <li>Multi-institution deployment support</li>
+          </ul>
+          <div class="sol-metrics">
+            <div><span class="sm-val">42%</span><span class="sm-lbl">Time Saved</span></div>
+            <div><span class="sm-val">12+</span><span class="sm-lbl">Schools Live</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-top">
+          <div class="sol-icon">◈</div>
+          <div class="sol-name">Enterprise Software Development</div>
+          <p class="sol-desc">Custom-built ERP systems, workflow automation engines, and business intelligence platforms architected around your specific operational requirements.</p>
+        </div>
+        <div class="sol-body">
+          <div class="sol-tag">// Custom Engineering</div>
+          <ul class="sol-pts">
+            <li>Custom ERP & workflow automation</li>
+            <li>Business intelligence & reporting</li>
+            <li>API integrations & microservices</li>
+            <li>Process digitization & optimization</li>
+            <li>Scalable SaaS architecture</li>
+          </ul>
+          <div class="sol-metrics">
+            <div><span class="sm-val">99.9%</span><span class="sm-lbl">Uptime SLA</span></div>
+            <div><span class="sm-val">24/7</span><span class="sm-lbl">Support</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sol-card">
+        <div class="sol-top">
+          <div class="sol-icon">◇</div>
+          <div class="sol-name">Cloud Infrastructure & Security</div>
+          <p class="sol-desc">Secure, compliant cloud environments with automated backups, disaster recovery, and enterprise-grade data protection for mission-critical operations.</p>
+        </div>
+        <div class="sol-body">
+          <div class="sol-tag">// Infrastructure & Compliance</div>
+          <ul class="sol-pts">
+            <li>Cloud migration & architecture</li>
+            <li>Data protection & compliance</li>
+            <li>Disaster recovery & backup</li>
+            <li>Network security & monitoring</li>
+            <li>DevOps & CI/CD pipeline setup</li>
+          </ul>
+          <div class="sol-metrics">
+            <div><span class="sm-val">3×</span><span class="sm-lbl">Performance</span></div>
+            <div><span class="sm-val">100%</span><span class="sm-lbl">Data Security</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     EXPORT OPERATIONS
+══════════════════════════════════════════════════ -->
+<section class="export" id="export">
+  <div class="s-inner">
+    <div class="eyebrow rv"><div class="ey-line"></div><div class="ey-txt">Export Operations</div></div>
+    <h2 class="sh rv">Global trade.<br>Handled <em>end-to-end</em>.</h2>
+    <p class="s-lead rv">Full-service physical goods export operations with real logistics management, international compliance expertise, and established trade networks across multiple markets.</p>
+    <div class="exp-layout">
+      <div class="exp-left rv">
+        <div class="exp-items">
+          <div class="exp-item">
+            <div class="exp-num">01</div>
+            <div class="exp-content">
+              <div class="exp-title">International Logistics</div>
+              <p class="exp-desc">End-to-end freight forwarding, customs clearance, and last-mile delivery management across 3 continents with real-time tracking.</p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-num">02</div>
+            <div class="exp-content">
+              <div class="exp-title">Compliance & Documentation</div>
+              <p class="exp-desc">Expert handling of export licenses, certificates of origin, trade agreements, and all regulatory requirements for international commerce.</p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-num">03</div>
+            <div class="exp-content">
+              <div class="exp-title">Trade Partnerships</div>
+              <p class="exp-desc">Established networks with manufacturers, distributors, and logistics partners ensuring reliable supply chains and competitive pricing.</p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-num">04</div>
+            <div class="exp-content">
+              <div class="exp-title">Market Intelligence</div>
+              <p class="exp-desc">Strategic market research and entry planning to identify opportunities and navigate challenges in target international markets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="exp-right rv d1">
+        <span class="exp-tag">// Export Division</span>
+        <div class="exp-headline">We move goods<br>across borders<br>seamlessly.</div>
+        <p class="exp-body">From regulatory compliance to final delivery, our export operations team manages every touchpoint of international trade. We've built lasting partnerships across Africa, Europe, and Asia — and we bring that network to your business.</p>
+        <div class="exp-stats">
+          <div class="es"><span class="es-val">65%</span><div class="es-lbl">Revenue Growth (Avg.)</div></div>
+          <div class="es"><span class="es-val">40%</span><div class="es-lbl">Faster Delivery</div></div>
+          <div class="es"><span class="es-val">3</span><div class="es-lbl">Continents Covered</div></div>
+          <div class="es"><span class="es-val">100%</span><div class="es-lbl">Compliance Record</div></div>
+        </div>
+        <a href="#contact" class="btn-turq">Discuss Export Opportunities →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     INDUSTRIES
+══════════════════════════════════════════════════ -->
+<section class="industries" id="industries">
+  <div class="s-inner">
+    <div class="eyebrow rv"><div class="ey-line"></div><div class="ey-txt">Industries We Serve</div></div>
+    <h2 class="sh rv">Where we <em>operate</em>.</h2>
+    <p class="s-lead rv">Tailored solutions across diverse sectors with deep industry expertise and proven implementation methodologies.</p>
+    <div class="ind-grid">
+      <div class="ind-card rv">
+        <div class="ind-num">01 / 04</div>
+        <div class="ind-name">K-12 & Universities</div>
+        <p class="ind-desc">Schools, universities, training academies, and e-learning platforms seeking comprehensive digital transformation and measurable operational efficiency gains.</p>
+        <span class="ind-arrow">→</span>
+      </div>
+      <div class="ind-card rv d1">
+        <div class="ind-num">02 / 04</div>
+        <div class="ind-name">Manufacturing & Trade</div>
+        <p class="ind-desc">Production companies and trading organizations expanding operations through integrated technology systems and international export capabilities.</p>
+        <span class="ind-arrow">→</span>
+      </div>
+      <div class="ind-card rv d2">
+        <div class="ind-num">03 / 04</div>
+        <div class="ind-name">Government & NGOs</div>
+        <p class="ind-desc">Public sector organizations and non-profits requiring secure, compliant systems with full audit trails, multi-stakeholder access, and accountability frameworks.</p>
+        <span class="ind-arrow">→</span>
+      </div>
+      <div class="ind-card rv d3">
+        <div class="ind-num">04 / 04</div>
+        <div class="ind-name">Corporate Enterprises</div>
+        <p class="ind-desc">Large organizations needing enterprise resource planning, workflow automation, and integrated business intelligence for competitive operational advantage.</p>
+        <span class="ind-arrow">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     CASE STUDIES
+══════════════════════════════════════════════════ -->
+<section class="cases" id="cases">
+  <div class="s-inner">
+    <div class="eyebrow rv"><div class="ey-line"></div><div class="ey-txt">Case Studies</div></div>
+    <h2 class="sh rv">Results that <em>speak</em>.</h2>
+    <p class="s-lead rv">Real-world implementations with documented outcomes, measurable ROI, and transformative business impact across education and export sectors.</p>
+    <div class="case-grid">
+      <div class="case-card rv">
+        <div class="case-label">EdTech · Multi-Institution</div>
+        <div class="case-name">Multi-School LMS Deployment</div>
+        <p class="case-desc">Deployed a comprehensive learning management system across 12 educational institutions serving 8,500+ students. Integration included virtual classrooms, automated grading, parent portals, and real-time analytics dashboards.</p>
+        <div class="case-metrics">
+          <div class="cm"><span class="cm-val">42%</span><div class="cm-lbl">Admin Time Reduced</div></div>
+          <div class="cm"><span class="cm-val">28%</span><div class="cm-lbl">Engagement Up</div></div>
+        </div>
+      </div>
+      <div class="case-card rv d1">
+        <div class="case-label">Export · Agricultural</div>
+        <div class="case-name">International Agricultural Export Expansion</div>
+        <p class="case-desc">Managed complete export operations for agricultural products entering 3 international markets. Handled regulatory compliance, established logistics networks, and negotiated distribution partnerships across EU and Asia.</p>
+        <div class="case-metrics">
+          <div class="cm"><span class="cm-val">65%</span><div class="cm-lbl">Revenue Growth</div></div>
+          <div class="cm"><span class="cm-val">40%</span><div class="cm-lbl">Faster Delivery</div></div>
+        </div>
+      </div>
+      <div class="case-card rv d2">
+        <div class="case-label">Enterprise · Manufacturing</div>
+        <div class="case-name">Enterprise Workflow Automation</div>
+        <p class="case-desc">Custom ERP system for manufacturing company with inventory management, procurement automation, production scheduling, and financial reporting modules integrated into a single operational platform.</p>
+        <div class="case-metrics">
+          <div class="cm"><span class="cm-val">55%</span><div class="cm-lbl">Process Efficiency</div></div>
+          <div class="cm"><span class="cm-val">$2.3M</span><div class="cm-lbl">Cost Savings</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     OUR AGENCIES
+══════════════════════════════════════════════════ -->
+<section class="agencies" id="agencies">
+  <div class="s-inner">
+    <div class="eyebrow rv"><div class="ey-line"></div><div class="ey-txt">Our Agencies</div></div>
+    <h2 class="sh rv">Specialized arms.<br>One <span class="gold">parent company</span>.</h2>
+    <p class="s-lead rv">ROYALMONAARCH ENTERPRISES operates two distinct specialist agencies — each a market leader in its domain, each backed by our enterprise infrastructure.</p>
+    <div class="ag-grid">
+
+      <!-- RMV CONSULT -->
+      <div class="ag-card turq-agency rv">
+        <div class="ag-top">
+          <div class="ag-badge">Consulting Division</div>
+          <div class="ag-crown">◎</div>
+          <span class="ag-type">Business Systems & Strategy</span>
+          <div class="ag-name">RMV Consult</div>
+          <p class="ag-promise">We install operating systems into high-potential consulting businesses — so you scale with systems, not sweat. The Vertex Effect in action.</p>
+        </div>
+        <div class="ag-body">
+          <div class="ag-focus">// Consulting, EdTech Strategy, Business Systems</div>
+          <ul class="ag-pts">
+            <li>Vertex Operating System — 5-pillar business framework</li>
+            <li>Positioning, Acquisition & Delivery mastery</li>
+            <li>Team building & SOP infrastructure</li>
+            <li>Revenue scaling from $5K to $50K+/month</li>
+            <li>Vertex Launch, Scale & Elite programs</li>
+          </ul>
+          <a href="rmv consult.html" target="_blank" class="ag-cta">
+            Visit RMV Consult &nbsp;→
+          </a>
+        </div>
+      </div>
+
+      <!-- RM VERTEX -->
+      <div class="ag-card gold-agency rv d1">
+        <div class="ag-top">
+          <div class="ag-badge">AI Systems Division</div>
+          <div class="ag-crown gold-crown">◈</div>
+          <span class="ag-type">AI Revenue Systems & Automation</span>
+          <div class="ag-name">RM Vertex</div>
+          <p class="ag-promise">Nigeria's No.1 AI Systems Agency. We install revenue-generating AI infrastructure for founders who refuse to compete on price or pace.</p>
+        </div>
+        <div class="ag-body">
+          <div class="ag-focus">// AI Automation · Revenue Recovery · Sovereign Ops</div>
+          <ul class="ag-pts">
+            <li>AI agents — lead qualification, support, workflows</li>
+            <li>Revenue recovery from dormant databases</li>
+            <li>Sub-90-second AI response across all channels</li>
+            <li>SOP automation & founder extraction systems</li>
+            <li>14-day installation · 90-day ROI guarantee</li>
+          </ul>
+          <a href="rm vertex.html" target="_blank" class="ag-cta" style="background:var(--gold);color:var(--void);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));display:inline-flex;align-items:center;gap:12px;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:14px 28px;border:none;cursor:none;transition:all .25s">
+            Visit RM Vertex &nbsp;→
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     LEADERSHIP TEAM
+══════════════════════════════════════════════════ -->
+<section class="team" id="team">
+  <div class="s-inner">
+    <div class="eyebrow rv"><div class="ey-line"></div><div class="ey-txt">Leadership</div></div>
+    <h2 class="sh rv">The people behind<br>the <em>enterprise</em>.</h2>
+    <p class="s-lead rv">Seasoned professionals with proven track records in enterprise technology, education systems, and international trade operations.</p>
+    <div class="team-grid">
+      <div class="team-card rv d1">
+        <div class="team-avatar">⚙</div>
+        <div class="team-name">Chief Technology Officer</div>
+        <div class="team-role">Software Architecture & Innovation</div>
+        <p class="team-bio">Specialized in scalable system design, cloud infrastructure, and security protocols. Led development of enterprise platforms serving 50,000+ concurrent users across multiple institution types.</p>
+      </div>
+      <div class="team-card rv">
+        <div class="team-avatar">♛</div>
+        <div class="team-name">Chief Executive Officer</div>
+        <div class="team-role">Strategic Leadership & Business Development</div>
+        <p class="team-bio">15+ years driving enterprise technology transformations and international business expansion. Expert in strategic planning, stakeholder management, and operational excellence across education and export sectors.</p>
+      </div>
+      <div class="team-card rv d2">
+        <div class="team-avatar">◎</div>
+        <div class="team-name">Director of Export Operations</div>
+        <div class="team-role">International Trade & Logistics</div>
+        <p class="team-bio">10+ years managing cross-border trade operations, regulatory compliance, and logistics networks across Africa, Europe, and Asia. Expert in emerging markets and supply chain optimization.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     RESOURCES
+══════════════════════════════════════════════════ -->
+<section class="resources" id="resources">
+  <div class="s-inner">
+    <div class="eyebrow rv"><div class="ey-line"></div><div class="ey-txt">Free Resources</div></div>
+    <h2 class="sh rv">Knowledge that<br>drives <em>decisions</em>.</h2>
+    <div class="res-grid rv">
+      <div class="res-item">
+        <div class="res-icon">◎</div>
+        <div class="res-name">Whitepapers & Research</div>
+        <p class="res-desc">In-depth technical analysis on EdTech trends, cloud architecture, cybersecurity, and international trade regulations.</p>
+        <div class="res-link">Download →</div>
+      </div>
+      <div class="res-item">
+        <div class="res-icon">◈</div>
+        <div class="res-name">Industry Reports</div>
+        <p class="res-desc">Quarterly market intelligence covering education technology adoption and export market opportunities in emerging economies.</p>
+        <div class="res-link">View Reports →</div>
+      </div>
+      <div class="res-item">
+        <div class="res-icon">◇</div>
+        <div class="res-name">Webinars & Training</div>
+        <p class="res-desc">Live and on-demand sessions on implementation strategies, technology deep-dives, and export operations frameworks.</p>
+        <div class="res-link">Register →</div>
+      </div>
+      <div class="res-item">
+        <div class="res-icon">◉</div>
+        <div class="res-name">Technical Blog</div>
+        <p class="res-desc">Regular updates on software development methodologies, system architecture patterns, and global trade intelligence.</p>
+        <div class="res-link">Read Blog →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     DEMO CTA
+══════════════════════════════════════════════════ -->
+<section class="cta-section" id="demo">
+  <div class="s-inner">
+    <div class="cta-box rv">
+      <div class="eyebrow" style="justify-content:center;margin-bottom:20px">
+        <div class="ey-line"></div><div class="ey-txt">Ready?</div><div class="ey-line"></div>
+      </div>
+      <h2 class="sh">Engineering Education.<br><em>Powering Global Trade.</em></h2>
+      <p>We work with institutions and trade partners who demand excellence. Schedule a personalized demonstration of our education systems — or discuss your export requirements with our team.</p>
+      <div class="cta-actions">
+        <a href="#contact" class="btn-turq">Request Software Demo →</a>
+        <a href="#contact" class="btn-gold">Export Consultation →</a>
+      </div>
+      <p class="cta-note">// No commitment required · Response within 24 hours · +234 809 819 8226</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     NEWSLETTER
+══════════════════════════════════════════════════ -->
+<div class="newsletter">
+  <div class="nl-box rv">
+    <div class="nl-left">
+      <h3>Stay informed.<br>Stay ahead.</h3>
+      <p>Subscribe for industry insights, technology updates, trade intelligence, and exclusive resources — delivered to your inbox.</p>
+    </div>
+    <div>
+      <form id="nlForm">
+        <div class="nl-form">
+          <input type="email" class="nl-input" id="nlEmail" placeholder="Enter your business email address" required>
+          <button type="submit" class="nl-btn">Subscribe →</button>
+        </div>
+        <p id="nlSuccess" style="display:none;font-family:var(--ff-mono);font-size:.6rem;color:var(--turq);letter-spacing:.1em;margin-top:12px">
+          ✓ Subscribed successfully. Welcome to the ROYALMONAARCH network.
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════════════ -->
+<section class="contact" id="contact">
+  <div class="s-inner">
+    <div class="eyebrow rv"><div class="ey-line"></div><div class="ey-txt">Contact</div></div>
+    <h2 class="sh rv">Let's start a<br><em>conversation</em>.</h2>
+    <p class="s-lead rv">Ready to transform your operations? Connect with our team to discuss your requirements and explore how ROYALMONAARCH ENTERPRISES can drive your success.</p>
+    <div class="contact-layout">
+      <div class="contact-info rv">
+        <div class="ci-block">
+          <div class="ci-icon">✉</div>
+          <div class="ci-content">
+            <div class="ci-label">Email Address</div>
+            <div class="ci-val"><a href="mailto:royalmonaarch@gmail.com">royalmonaarch@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">⌖</div>
+          <div class="ci-content">
+            <div class="ci-label">Headquarters</div>
+            <div class="ci-val" style="color:var(--mid)">Kaduna, Nigeria</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">◷</div>
+          <div class="ci-content">
+            <div class="ci-label">Response Time</div>
+            <div class="ci-val" style="color:var(--mid)">Within 24 hours · Mon–Sat</div>
+          </div>
+        </div>
+        <div class="ci-block">
+          <div class="ci-icon">◎</div>
+          <div class="ci-content">
+            <div class="ci-label">Our Agencies</div>
+            <div class="ci-val" style="color:var(--mid)">RMV Consult &nbsp;·&nbsp; RM Vertex</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form rv d1">
+        <form id="contactForm">
+          <div class="form-field">
+            <input type="text" id="cName" placeholder="Full Name *">
+            <div class="err-msg" id="eqName">// Please enter your full name</div>
+          </div>
+          <div class="form-field">
+            <input type="email" id="cEmail" placeholder="Business Email *">
+            <div class="err-msg" id="eqEmail">// Please enter a valid email address</div>
+          </div>
+          <div class="form-field">
+            <input type="tel" id="cPhone" placeholder="Phone Number *">
+            <div class="err-msg" id="eqPhone">// Please enter your phone number</div>
+          </div>
+          <div class="form-field">
+            <input type="text" id="cCompany" placeholder="Company / Organization *">
+            <div class="err-msg" id="eqCompany">// Please enter your company name</div>
+          </div>
+          <div class="form-field">
+            <select id="cInterest">
+              <option value="">Area of Interest *</option>
+              <option value="edu">Education Management Systems</option>
+              <option value="enterprise">Enterprise Software Development</option>
+              <option value="cloud">Cloud Infrastructure & Security</option>
+              <option value="export">Export Operations</option>
+              <option value="rmv">RMV Consult — Business Systems</option>
+              <option value="rmvertex">RM Vertex — AI Automation</option>
+              <option value="general">General Consultation</option>
+            </select>
+            <div class="err-msg" id="eqInterest">// Please select an area of interest</div>
+          </div>
+          <div class="form-field">
+            <textarea id="cMessage" placeholder="Tell us about your project or requirements *"></textarea>
+            <div class="err-msg" id="eqMessage">// Please provide details (minimum 10 characters)</div>
+          </div>
+          <button type="submit" class="btn-turq" style="width:100%;justify-content:center">
+            Send Message →
+          </button>
+          <div class="success-box" id="successBox">
+            <p>✓ MESSAGE RECEIVED — We will respond within 24 hours. Thank you for reaching out to ROYALMONAARCH ENTERPRISES.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">
+          <span style="color:var(--turq);font-size:1rem">♛</span>
+          ROYALMONAARCH<span class="dot">.</span>
+        </div>
+        <p class="footer-brand-p">Engineering Education. Powering Global Trade. Enterprise-grade learning platforms and full-cycle export operations for institutions, governments, and global partners.</p>
+        <div class="footer-socials">
+          <a href="https://linkedin.com" target="_blank" class="fs-link" title="LinkedIn">in</a>
+          <a href="https://twitter.com" target="_blank" class="fs-link" title="Twitter">𝕏</a>
+          <a href="https://youtube.com" target="_blank" class="fs-link" title="YouTube">▶</a>
+          <a href="https://instagram.com" target="_blank" class="fs-link" title="Instagram">◉</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="#solutions">Education Platforms</a></li>
+          <li><a href="#solutions">Enterprise Software</a></li>
+          <li><a href="#solutions">Cloud Infrastructure</a></li>
+          <li><a href="#export">Export Operations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Agencies</h4>
+        <ul>
+          <li><a href="ummy.html" target="_blank">RMV Consult</a></li>
+          <li><a href="website.html" target="_blank">RM Vertex</a></li>
+          <li><a href="#agencies">About Our Agencies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#team">Leadership Team</a></li>
+          <li><a href="#cases">Case Studies</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="#contact">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:royalmonaarch@gmail.com">royalmonaarch@gmail.com</a></li>
+          <li><a href="#contact">Kaduna, Nigeria</a></li>
+          <li><a href="#demo">Request Demo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 ROYALMONAARCH ENTERPRISES. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════
+     LIVE CHAT
+══════════════════════════════════════════════════ -->
+<div class="chat-bubble" id="chatBubble">
+  ◉ &nbsp; Live Support
+</div>
+<div class="chat-win" id="chatWin">
+  <div class="chat-head">
+    <div class="chat-head-info">
+      <div class="chat-head-name">ROYALMONAARCH Support</div>
+      <div class="chat-head-status">// Typically replies in minutes</div>
+    </div>
+    <button class="chat-close" id="chatClose">×</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-msg agent">
+      Welcome to ROYALMONAARCH ENTERPRISES. How can we assist you today? Ask about our education systems, export operations, or schedule a demo.
+    </div>
+  </div>
+  <div class="chat-foot">
+    <input type="text" class="chat-inp" id="chatInp" placeholder="Type a message...">
+    <button class="chat-send" id="chatSend">→</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════ -->
+<script>
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),curT=document.getElementById('curT');
+let mx=0,my=0,tx=0,ty=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function tick(){tx+=(mx-tx)*.13;ty+=(my-ty)*.13;curT.style.left=tx+'px';curT.style.top=ty+'px';requestAnimationFrame(tick)})();
+document.querySelectorAll('a,button,.ind-card,.sol-card,.ag-card,.ci-block,.res-item,.case-card,.cred-item,.exp-item').forEach(el=>{
+  el.addEventListener('mouseenter',()=>curT.style.transform='translate(-50%,-50%) scale(2.2)');
+  el.addEventListener('mouseleave',()=>curT.style.transform='translate(-50%,-50%) scale(1)');
+});
+
+/* ── NAV ── */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('solid',scrollY>40));
+const hamburger=document.getElementById('hamburger');
+const navMobile=document.getElementById('navMobile');
+hamburger.addEventListener('click',()=>navMobile.classList.toggle('open'));
+function closeNav(){navMobile.classList.remove('open')}
+function scrollTo(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=a.getAttribute('href');
+    if(t==='#')return;
+    const el=document.querySelector(t);
+    if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'});closeNav();}
+  });
+});
+
+/* ── SCROLL REVEAL ── */
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.07,rootMargin:'0px 0px -32px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ── CONTACT FORM ── */
+const cForm=document.getElementById('contactForm');
+function v(id,errId,fn){
+  const el=document.getElementById(id);
+  const err=document.getElementById(errId);
+  const ok=fn(el.value);
+  el.classList.toggle('err',!ok);
+  err.style.display=ok?'none':'block';
+  return ok;
+}
+cForm.addEventListener('submit',e=>{
+  e.preventDefault();
+  const ok=[
+    v('cName','eqName',s=>s.trim().length>1),
+    v('cEmail','eqEmail',s=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s)),
+    v('cPhone','eqPhone',s=>s.trim().length>=8),
+    v('cCompany','eqCompany',s=>s.trim().length>1),
+    v('cInterest','eqInterest',s=>s!==''),
+    v('cMessage','eqMessage',s=>s.trim().length>=10)
+  ].every(Boolean);
+  if(ok){
+    console.log('ROYALMONAARCH Contact Submission:',{
+      name:document.getElementById('cName').value,
+      email:document.getElementById('cEmail').value,
+      phone:document.getElementById('cPhone').value,
+      company:document.getElementById('cCompany').value,
+      interest:document.getElementById('cInterest').value,
+      message:document.getElementById('cMessage').value,
+      timestamp:new Date().toISOString()
+    });
+    document.getElementById('successBox').style.display='block';
+    cForm.reset();
+    setTimeout(()=>document.getElementById('successBox').style.display='none',6000);
+  }
+});
+
+/* ── NEWSLETTER ── */
+document.getElementById('nlForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const email=document.getElementById('nlEmail').value;
+  if(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    console.log('Newsletter subscription:',email);
+    document.getElementById('nlSuccess').style.display='block';
+    document.getElementById('nlEmail').value='';
+    setTimeout(()=>document.getElementById('nlSuccess').style.display='none',5000);
+  }
+});
+
+/* ── LIVE CHAT ── */
+const bubble=document.getElementById('chatBubble');
+const chatWin=document.getElementById('chatWin');
+const chatClose=document.getElementById('chatClose');
+const chatSend=document.getElementById('chatSend');
+const chatInp=document.getElementById('chatInp');
+const chatBody=document.getElementById('chatBody');
+let chatOpen=false;
+
+bubble.addEventListener('click',()=>{
+  chatOpen=!chatOpen;
+  if(chatOpen){chatWin.style.display='flex';void chatWin.offsetWidth;chatWin.classList.add('open');}
+  else{chatWin.classList.remove('open');setTimeout(()=>{chatWin.style.display='none'},300);}
+});
+chatClose.addEventListener('click',()=>{
+  chatOpen=false;chatWin.classList.remove('open');
+  setTimeout(()=>{chatWin.style.display='none'},300);
+});
+
+const responses=[
+  'Thank you for reaching out. Our team will connect with you shortly. For immediate assistance, call +234 809 819 8226.',
+  'We offer Education Management Systems, Enterprise Software, Cloud Infrastructure, and Export Operations. Which are you interested in?',
+  'Great question. We serve K-12 schools, universities, governments, NGOs, and corporate enterprises.',
+  'Our export operations span Africa, Europe, and Asia — full compliance and logistics handled for you.',
+  'You can also reach us directly at royalmonaarch@gmail.com. We respond within 24 hours.'
+];
+let rIdx=0;
+function addMsg(text,isUser){
+  const d=document.createElement('div');
+  d.className='chat-msg'+(isUser?' user':' agent');
+  d.textContent=text;
+  chatBody.appendChild(d);
+  chatBody.scrollTop=chatBody.scrollHeight;
+}
+function sendMsg(){
+  const msg=chatInp.value.trim();
+  if(!msg)return;
+  addMsg(msg,true);
+  chatInp.value='';
+  setTimeout(()=>addMsg(responses[rIdx%responses.length]),1200);
+  rIdx++;
+}
+chatSend.addEventListener('click',sendMsg);
+chatInp.addEventListener('keypress',e=>{if(e.key==='Enter')sendMsg()});
+</script>
+</body>
+</html>
